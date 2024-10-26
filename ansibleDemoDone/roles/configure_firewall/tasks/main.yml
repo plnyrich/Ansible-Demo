@@ -1,0 +1,13 @@
+---
+- name: Open port in firewall
+  ansible.posix.firewalld:
+    permanent: true
+    port: "{{ httpPort }}/tcp"
+    state: enabled
+    immediate: true
+  tags: configuration
+
+- name: Warn about the opened port
+  debug:
+    msg: "Port {{ httpPort }}/tcp opened!"
+  tags: configuration

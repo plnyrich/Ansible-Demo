@@ -1,0 +1,4 @@
+---
+- name: Print obtained port
+  debug:
+    msg: "Got port {{ port }}"

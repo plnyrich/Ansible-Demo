@@ -1,0 +1,11 @@
+---
+- name: Run shell command
+  shell: |
+    date
+    sleep 1
+    exit 0
+  register: shell_cmd
+
+- name: Print shell command output
+  debug:
+    msg: "stdout: {{ shell_cmd.stdout }}"

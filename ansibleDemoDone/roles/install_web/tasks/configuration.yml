@@ -1,0 +1,16 @@
+---
+- name: Install templated httpd.conf
+  template:
+    src: "files/httpd.conf"
+    dest: /etc/httpd/conf/httpd.conf
+    owner: root
+    group: root
+    mode: 0644
+  tags: configuration
+
+- name: Start httpd service
+  service:
+    enabled: true
+    name: httpd
+    state: restarted
+  tags: configuration

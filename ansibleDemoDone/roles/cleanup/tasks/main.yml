@@ -1,0 +1,13 @@
+---
+- name: Close port in firewall
+  ansible.posix.firewalld:
+    permanent: true
+    port: "{{ httpPort }}/tcp"
+    state: disabled
+    immediate: true
+  tags: cleanup
+
+- name: Info about the closed port
+  debug:
+    msg: "Port {{ httpPort }}/tcp closed!"
+  tags: cleanup

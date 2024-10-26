@@ -1,0 +1,5 @@
+---
+- name: Say hello
+  debug:
+    msg: hello
+  tags: hello

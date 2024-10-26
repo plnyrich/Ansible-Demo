@@ -1,0 +1,44 @@
+---
+- name: Ensure folder exists
+  file:
+    path: "{{ activeFolder }}"
+    state: directory
+
+- name: Ensure old files are removed
+  file:
+    path: "{{ item }}"
+    state: absent
+  loop: "{{ filePaths }}"
+  tags: cleanup
+
+- name: Create new files
+  copy:
+    dest: "{{ activeFolder }}/{{ item.fileName }}"
+    content: "{{ item.content }} "
+  loop:
+    - { fileName: "file1", content: "hello\n" }
+    - { fileName: "file2", content: "l1\nl2\n" }
+
+- name: Install configs
+  copy: 
+    src: "{{ item.confFile }}"
+    dest: "{{ item.dest }}"
+    mode: "{{ item.mode | default('0644') }}"
+  with_items:
+    - { confFile: "files/mariadb.conf", dest: "{{ activeFolder }}", mode: 777 }
+    - { confFile: "files/webserver.conf", dest: "{{ activeFolder }}" }
+  tags: installation
+
+- name: Install templated redis.conf
+  template:
+    src: "{{ inventory_dir }}/host_files/{{ inventory_hostname }}/redis.conf.in"
+    dest: "{{ activeFolder }}/redis.conf"
+    owner: root
+    group: root
+    mode: "0644"
+  tags: installation
+
+- name: Print OracleLinux version
+  debug:
+    msg: "OracleLinux {{ ansible_facts['distribution_major_version'] }}"
+  when: ansible_facts['distribution'] == "OracleLinux"

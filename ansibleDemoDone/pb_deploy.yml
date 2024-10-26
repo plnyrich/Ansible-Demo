@@ -1,0 +1,8 @@
+---
+- hosts: webservers
+  become: yes
+  roles:
+    - cleanup
+    - prepare_env
+    - install_web
+    - configure_firewall
