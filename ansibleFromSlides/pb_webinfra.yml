@@ -1,0 +1,21 @@
+---
+- hosts: web_servers
+  become: yes
+  vars:
+    filePaths:
+      - /tmp/file1
+      - "/tmp/file2"
+  roles:
+    - install_deps
+    - install_web_server
+    - firewall_setup
+
+- hosts: db_servers
+  become: yes
+  vars:
+    backupPath: "/var/backup"
+  roles:
+    - install_deps
+    - install_db_server
+    - setup_backups
+    - firewall_setup

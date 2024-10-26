@@ -1,0 +1,5 @@
+---
+- name: Install htop
+  ansible.builtin.dnf:
+    name: htop
+    state: latest

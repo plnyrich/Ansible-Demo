@@ -1,0 +1,14 @@
+- hosts: local
+  become: yes
+  vars:
+    filePaths:
+      - /tmp/file1
+      - "/tmp/file2"
+    activeFolder: "/tmp/ansibledemo"
+  roles:
+    - debug
+    - examples
+    - install_deps
+    - install_httpd_server
+    - say_hello
+    - shell

@@ -1,0 +1,15 @@
+web_servers:
+  hosts:
+    web_server1.domain.com
+    web_server2.domain.com
+
+db_servers:
+  hosts:
+    db_server1.domain.com:
+      ansible_user: dbmanager
+      ansible_become: yes
+      ansible_become_method: sudo
+
+local:
+  hosts:
+    localhost

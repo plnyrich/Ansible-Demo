@@ -1,0 +1,14 @@
+---
+- name: Debug
+  debug:
+    msg: "{{ item }}"
+  loop: "{{ filePaths }}"
+
+- name: Print info about the target system
+  debug:
+    msg: "{{ ansible_facts }}"
+
+- name: Print OracleLinux version
+  debug:
+    msg: "We are on OracleLinux {{ ansible_facts['distribution_major_version'] }}"
+  when: ansible_facts['distribution'] == "OracleLinux"

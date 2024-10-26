@@ -1,0 +1,10 @@
+# Redis configuration file example.
+
+############# NETWORK #############
+
+bind {{ redis_host }}
+port {{ redis_port | default(1111) }}
+protected-mode yes
+tcp-backlog 511
+timeout 0
+tcp-keepalive 300

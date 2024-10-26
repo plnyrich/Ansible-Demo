@@ -1,0 +1,5 @@
+---
+- name: Say hi
+  debug:
+    msg: hi
+  tags: hi
