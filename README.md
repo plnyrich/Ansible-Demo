@@ -44,5 +44,10 @@ If the demo finished running successfully, you can call:
 curl http://localhost:12500/home.html
 ```
 
+If you have problem with unknown `ERROR! couldn't resolve module/action 'ansible.posix.firewalld`, make sure you have installed `ansible.posix` collection:
+```
+ansible-galaxy collection install ansible.posix
+```
+
 ### Contact
 Contact: [plnyrich@fit.cvut.cz](mailto:plnyrich@fit.cvut.cz)
