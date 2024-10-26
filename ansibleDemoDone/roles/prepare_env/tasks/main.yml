@@ -1,0 +1,11 @@
+---
+- name: Prepare environment
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    - wget
+    - curl
+    - htop
+    - vim
+  tags: installation

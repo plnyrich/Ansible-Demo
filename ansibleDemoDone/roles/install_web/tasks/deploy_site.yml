@@ -1,0 +1,9 @@
+---
+- name: Install our static website
+  template:
+    src: "{{ inventory_dir }}/host_files/{{ inventory_hostname }}/home.html"
+    dest: /var/www/html
+    owner: root
+    group: root
+    mode: 0644
+  tags: configuration

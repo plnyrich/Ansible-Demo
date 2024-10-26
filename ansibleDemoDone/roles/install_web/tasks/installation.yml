@@ -1,0 +1,6 @@
+---
+- name: Install httpd
+  dnf:
+    name: httpd
+    state: latest
+  tags: installation
